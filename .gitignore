@@ -6,6 +6,7 @@ build/
 nbproject/
 output/
 visual/
+ide_profiles/
 # editor config
 .vscode/
 

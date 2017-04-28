@@ -18,9 +18,9 @@ void KalmanFilter::_CorrectionStep(const VectorXd &y){
     
     MatrixXd Ht = H_.transpose();
 //    std::cout<<"R_: "<<R_<<std::endl;
-    MatrixXd S = H_ * P_ * Ht + R_;
-    MatrixXd Si = S.inverse();
     MatrixXd PHt = P_ * Ht;
+    MatrixXd S = H_ * PHt + R_;
+    MatrixXd Si = S.inverse();
     MatrixXd K = PHt * Si;
 
     //new estimate

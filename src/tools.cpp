@@ -59,8 +59,8 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
     //check division by zero
     if(fabs(c1) < 0.0001){
             std::cout << "CalculateJacobian () - Error - Division by Zero" << std::endl;
-//            exit(EXIT_FAILURE);
-            return Hj;
+            c1 = 0.0001;
+            //Hj.fill(0.0);
             
     }
 
@@ -112,16 +112,5 @@ VectorXd Tools::Polar2Cartesian(const VectorXd& polar_coords){
     return new_state;
 }
 void Tools::Between_PI_PI(float &angle){
-  bool in_range = false;
-  while (in_range == false) {
-    if (angle > PI) {
-      angle = angle - 2.0*PI;
-    }
-    else if (angle < -PI) {
-      angle = angle + 2.0*PI;
-    } 
-    else {
-    in_range = true;
-    }
-  }
+  angle = atan2(sin(angle), cos(angle));
 }
